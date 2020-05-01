@@ -1,7 +1,10 @@
 <?php
 
 
-class MySQLFactory
+class MySQLFactory extends DbFactory
 {
-
+    public function createConnection()
+    {
+        return new MySQL();
+    }
 }

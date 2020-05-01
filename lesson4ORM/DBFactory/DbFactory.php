@@ -1,7 +1,7 @@
 <?php
 
 
-class DbFactory
+abstract class DbFactory
 {
-
+    abstract public function createConnection();
 }
