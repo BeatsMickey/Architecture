@@ -3,8 +3,13 @@
 
 class MySQLFactory extends DbFactory
 {
-    public function createConnection()
+    public function DbConnection()
     {
-        return new MySQL();
+        return new MySQLDdConnection();
+    }
+
+    public function DbQueryBuilder()
+    {
+        return new MySQLDbQueryBuilder($this->DbConnection());
     }
 }

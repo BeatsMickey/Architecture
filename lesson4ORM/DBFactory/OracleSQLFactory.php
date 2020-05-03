@@ -3,8 +3,13 @@
 
 class OracleSQLFactory extends DbFactory
 {
-    public function createConnection()
+    public function DbConnection()
     {
-        return new OracleSQL();
+        return new OracleSQLDbConnection();
+    }
+
+    public function DbQueryBuilder()
+    {
+        return new OracleSQLDbQueryBuilder($this->DbConnection());
     }
 }

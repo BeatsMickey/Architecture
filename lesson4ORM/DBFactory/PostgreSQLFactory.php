@@ -3,8 +3,13 @@
 
 class PostgreSQLFactory extends DbFactory
 {
-    public function createConnection()
+    public function DbConnection()
     {
-        return new PostgreSQL();
+        return new PostgreSQLDbConnection();
+    }
+
+    public function DbQueryBuilder()
+    {
+        return new PostrgreSQLDbQueryBuilder($this->DbConnection());
     }
 }
