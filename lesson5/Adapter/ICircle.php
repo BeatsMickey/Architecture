@@ -1,7 +1,7 @@
 <?php
 
 
-class ICircle
+interface ICircle
 {
-
+    public function circleArea(int $circumference);
 }
