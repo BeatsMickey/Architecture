@@ -1,7 +1,7 @@
 <?php
 
 
-class UserRepository implements SplSubject
+class UserObservable implements SplSubject
 {
     private static $instance = null;
     private Array $observers = [];
@@ -27,8 +27,12 @@ class UserRepository implements SplSubject
 
     private function getEventObservers(string  $event = "*"): array {
         $this->setupEventGroup($event);
-        $group = $this->observers[$event];
+        $group = [];
+        if (!($event === "*")) {
+            $group = $this->observers[$event];
+        }
         $all = $this->observers["*"];
+        var_dump($all);
 
         return array_merge($group, $all);
     }
@@ -52,5 +56,4 @@ class UserRepository implements SplSubject
             $observer->update($this, $event);
         }
     }
-
 }
