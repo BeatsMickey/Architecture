@@ -3,15 +3,14 @@
 
 class Order
 {
-    private $sum;
-    private $phone;
-    private $products;
+    private float $sum;
+    private int $phone;
+    private array $products;
 
     public function __construct(int $id)
     {
-        $this->products = $id;
-        $this->sum = $id;
-        $this->phone = $id;
+        $this->products = $this->getProducts($id);
+        $this->sum = $this->getSum($id);
     }
 
     private function getProducts(int $id) {
@@ -29,7 +28,7 @@ class Order
     private function parseProductToString(array $products) {
         $productsString = '';
         foreach ($products as $product) {
-            $productsString .= "Название продукта: {$product[0]}, цвет: {$product[1]}".PHP_EOL;
+            $productsString .= "Название продукта: {$product[0]}, размер: {$product[1]}".PHP_EOL;
         }
         return $productsString;
     }
