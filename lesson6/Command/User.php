@@ -22,7 +22,7 @@ class User
     public function down(int $levels) {
         for ($i = 0; $i < $levels; $i++) {
             if($this->current > 0) {
-                if($this->commands[$this->current-1]->operator === 'copy') {
+                if($this->commands[$this->current - 1]->operator === 'copy') {
                     $i--;
                     $this->current--;
                     continue;
@@ -34,9 +34,10 @@ class User
 
     public function up(int $levels) {
         for ($i = 0; $i < $levels; $i++) {
-            if($this->current < count($this->commands)-1) {
-                if($this->commands[$this->current++]->operator === 'copy') {
+            if($this->current <= count($this->commands)-1) {
+                if($this->commands[$this->current + 1]->operator === 'copy') {
                     $i--;
+                    $this->current++;
                     continue;
                 }
                 $this->commands[$this->current++]->execute();
